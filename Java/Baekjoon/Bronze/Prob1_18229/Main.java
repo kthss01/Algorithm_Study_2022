@@ -1,4 +1,4 @@
-package Prob_18229;
+package Prob1_18229;
 
 import java.io.BufferedReader;
 import java.io.IOException;

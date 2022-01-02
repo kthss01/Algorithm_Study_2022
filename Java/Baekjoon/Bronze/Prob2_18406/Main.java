@@ -1,4 +1,4 @@
-package Prob_18406;
+package Prob2_18406;
 
 import java.util.Scanner;
 
