@@ -1,3 +1,5 @@
+package Baekjoon.Bronze.Prob1_1236;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

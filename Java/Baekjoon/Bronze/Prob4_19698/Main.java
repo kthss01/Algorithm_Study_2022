@@ -1,4 +1,4 @@
-package Prob4_19698;
+package Baekjoon.Bronze.Prob4_19698;
 
 import java.io.BufferedReader;
 import java.io.IOException;

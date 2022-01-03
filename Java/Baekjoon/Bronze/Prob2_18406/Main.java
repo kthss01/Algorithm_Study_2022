@@ -1,4 +1,4 @@
-package Prob2_18406;
+package Baekjoon.Bronze.Prob2_18406;
 
 import java.util.Scanner;
 
