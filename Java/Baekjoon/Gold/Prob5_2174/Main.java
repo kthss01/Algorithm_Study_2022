@@ -118,7 +118,7 @@ class Robot {
                 x--;
                 break;
             case "S":
-                y++;
+                y--;
                 break;
             case "E":
                 x++;
@@ -150,6 +150,7 @@ public class Main {
             list.add(new Robot(x, y, dir));
         }
 
+        boolean isCollision = false;
         for (int i = 0; i < m; i++) {
             token = new StringTokenizer(br.readLine());
             int index = Integer.parseInt(token.nextToken());
@@ -158,7 +159,6 @@ public class Main {
 
             Robot robot = list.get(index - 1);
 
-            boolean isCollision = false;
             for (int j = 0; j < cnt; j++) {                
                 switch (order) {
                     case "L":
@@ -192,9 +192,11 @@ public class Main {
             }
             if (isCollision) {
                 break;
-            } else {
-                sb.append("OK").append("\n");
             }
+        }
+
+        if (!isCollision) {
+            sb.append("OK").append("\n");
         }
 
         System.out.println(sb);
