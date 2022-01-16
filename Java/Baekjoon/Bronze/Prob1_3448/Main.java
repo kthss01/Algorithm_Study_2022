@@ -50,11 +50,12 @@ public class Main {
                 }
             }
 
-            double ratio = ((double) missCnt) / cnt;
+            double ratio = ((double) (cnt - missCnt)) / cnt * 100;
+            ratio = Math.round(ratio * 10) / 10.0;
             sb.append("Efficiency ratio is ")
                 .append(ratio == (double) ((int) ratio) 
                     ?  (int) ratio 
-                    : String.format("%.2f", ratio))
+                    : String.format("%.1f", ratio))
                 .append("%.\n");
         }
 
