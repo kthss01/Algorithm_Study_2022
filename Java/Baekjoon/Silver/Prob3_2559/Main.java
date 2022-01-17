@@ -1,4 +1,4 @@
-package Baekjoon.Silver.Prbo3_2559;
+package Baekjoon.Silver.Prob3_2559;
 
 import java.io.BufferedReader;
 import java.io.IOException;
