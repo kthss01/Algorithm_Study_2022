@@ -1,6 +1,11 @@
 package Baekjoon.Gold.Prob4_9935;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * 문자열 폭발 - 골드 4
@@ -30,23 +35,41 @@ import java.util.Scanner;
  *  첫째 줄에 모든 폭발이 끝난 후 남은 문자열을 출력한다.
  */
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
-        sb.append(sc.nextLine());
-        String boom = sc.nextLine();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+        String b = br.readLine();
+        char[] result = new char[str.length()];
 
-        while (sb.indexOf(boom) != -1) {
-            int index = sb.indexOf(boom);
-            sb.delete(index, index + boom.length());
+        int index = 0;
+        for (char ch : str.toCharArray()) {
+            result[index++] = ch;
+            int p = b.length();
+            if (ch == b.charAt(--p)) {
+                boolean isSame = false;
+                int s = index - b.length();
+                if (s < 0) {
+                    continue;
+                } 
+                for (int i = index - 1; i >= s; i--) {
+                    if (result[i] == b.charAt(p--)) {
+                        isSame = true;
+                    } else {
+                        isSame = false;
+                        break;
+                    }
+                }
+
+                if (isSame) {
+                    index -= b.length();
+                }
+            }
         }
 
-        if (sb.length() == 0) {
-            System.out.println("FRULA");
-        } else {
-            System.out.println(sb);
+        String ans = "FRULA";
+        if (index > 0) {
+            ans = String.valueOf(result, 0, index);
         }
-
-        sc.close();
+        System.out.println(ans);
     }
 }
