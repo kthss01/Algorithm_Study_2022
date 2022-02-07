@@ -46,7 +46,7 @@ public class Main {
             int ans = d;
 
             for (int i = 1; i < m; i++) {
-                ans += days[i];
+                ans += days[i - 1];
                 if (i == 2 && isLeap) {
                     ans++; // 윤년
                 }
