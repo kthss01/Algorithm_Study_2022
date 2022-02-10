@@ -42,6 +42,9 @@ import java.util.StringTokenizer;
  *  그 중 아무것이나 하나 출력
  * 
  * 시간초과남 투 포인터 써야할거 같은데 
+ * 찾아보니 반복문 하나 돌리고 안쪽은 이진탐색으로 하면 된다고 함
+ * 
+ * 투 포인터도 되는듯
  */
 public class Main {
     public static void main(String[] args) throws NumberFormatException, IOException {
@@ -54,20 +57,57 @@ public class Main {
             arr[i] = Integer.parseInt(token.nextToken());
         }
 
-        int n1 = 0;
-        int n2 = 0;
-        int dist = 1000000001;
-        for (int i = 0; i < n - 1; i++) {
-            n1 = arr[i];
+        // int n1 = 0;
+        // int n2 = 0;
+        // int dist = Integer.MAX_VALUE;
+        // for (int i = 0; i < n; i++) {
+        //     int low = i + 1;
+        //     int high = n - 1;
+            
+        //     while (low <= high) {
+        //         int mid = (low + high) / 2;
 
-            int low = i + 1;
-            int high = n - 1;
-            int mid = (low + high) / 2;
+        //         int sum = arr[i] + arr[mid];
 
-            if (Math.abs(n1 + arr[mid]) < dist) {
-                
+        //         if (dist > Math.abs(sum)) {
+        //             dist = Math.abs(sum);
+        //             n1 = arr[i];
+        //             n2 = arr[mid];
+    
+        //             if (n1 > n2) {
+        //                 int temp = n1;
+        //                 n1 = n2;
+        //                 n2 = temp;
+        //             }
+        //         }
+
+        //         if (sum < 0) {
+        //             low = mid + 1;
+        //         } else {
+        //             high = mid - 1;
+        //         }
+        //     }
+            
+        // }
+        // System.out.println(n1 + " " + n2);
+
+        int s = 0, e = n-1;
+        int min = Integer.MAX_VALUE;
+        int ansS = 0, ansE = 0;
+        while (s < e) {
+            int sum = Math.abs(arr[e]+arr[s]);
+            if (sum < min) {
+                min = sum;
+                ansS = s;
+                ansE = e;
             }
+            if (sum == 0)
+                break;
+
+            if (arr[e]+arr[s] > 0) e--;
+            else s++;
         }
-        System.out.println();
+
+        System.out.println(arr[ansS] + " " + arr[ansE]);
     }
 }
