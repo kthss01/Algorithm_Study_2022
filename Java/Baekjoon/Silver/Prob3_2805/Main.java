@@ -58,30 +58,24 @@ public class Main {
             // minHeight = Math.min(minHeight, trees[i]);
             maxHeight = Math.max(maxHeight, trees[i]);
         }
-        int s = 1;
+        int s = 0;
         int e = maxHeight;
 
-        int height = maxHeight;
-        int carry = computeTree(height - 1);
-        while (s <= e) {
+        while (s < e) {
             int mid = (s + e) / 2;
-            int temp = computeTree(mid);
+            long sum = computeTree(mid);
 
-            if (temp == m) {
-                height = mid;
-                break;
-            } else if (temp > m) {
-                height = mid;
-                e = mid - 1;
+            if (sum < m) {
+                e = mid;
             } else {
                 s = mid + 1;
             }
         }
-        System.out.println(height);
+        System.out.println(s - 1);
     }
 
-    private static int computeTree(int height) {
-        int ans = 0;
+    private static long computeTree(int height) {
+        long ans = 0;
         for (int tree : trees) {
             ans += Math.max(0, tree - height);
         }
