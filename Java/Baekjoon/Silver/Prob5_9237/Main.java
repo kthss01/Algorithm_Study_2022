@@ -1,5 +1,12 @@
 package Baekjoon.Silver.Prob5_9237;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.StringTokenizer;
+
 /**
  * 이장님 초대 - 실버 5
  * 
@@ -21,5 +28,25 @@ package Baekjoon.Silver.Prob5_9237;
  *  묘목을 구입한 날이 1일
  */
 public class Main {
-    
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        StringTokenizer token = new StringTokenizer(br.readLine());
+        
+        Integer[] arr = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(token.nextToken());
+        }
+
+        Arrays.sort(arr, Comparator.reverseOrder());  
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            int temp = arr[i] + i + 1;
+            ans = Math.max(temp, ans);
+        }
+
+        ans++; // 다 자라고 난 다음날 초대라 +1
+        System.out.println(ans);
+    }
 }
