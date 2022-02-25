@@ -36,10 +36,7 @@ import java.util.StringTokenizer;
  */
 
 public class Main {
-    enum CheckType {
-        
-    }
-
+    
     static int[][] arr;
     static boolean[][][] check;
 
@@ -76,49 +73,8 @@ public class Main {
     }
 
     private static boolean isSudoku() {
-
-        // 행 체크
-        for (int i = 0; i < 9; i++) {
-            check = new boolean[9];
-            for (int j = 0; j < 9; j++) {
-                if (!check[arr[i][j] - 1]) {
-                    check[arr[i][j] - 1] = true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        // 열 체크
-        for (int i = 0; i < 9; i++) {
-            check = new boolean[9];
-            for (int j = 0; j < 9; j++) {
-                if (!check[arr[i][j] - 1]) {
-                    check[arr[i][j] - 1] = true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        // 칸 체크
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                check = new boolean[9];
-                for (int k = 0; k < 3; k++) {
-                    for (int l = 0; l < 3; l++) {
-                        int x = i * 3 + k;
-                        int y = j * 3 + l;
-                        if (!check[arr[x][y] - 1]) {
-                            check[arr[x][y] - 1] = true;
-                        } else {
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-
-        return true;
+        return false;
     }
+
+    
 }
