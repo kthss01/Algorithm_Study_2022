@@ -36,9 +36,8 @@ import java.util.StringTokenizer;
  */
 
 public class Main {
-    
     static int[][] arr;
-    static boolean[][][] check;
+    static boolean[] check;
 
     public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -73,8 +72,49 @@ public class Main {
     }
 
     private static boolean isSudoku() {
-        return false;
-    }
 
-    
+        // 열 체크
+        for (int i = 0; i < 9; i++) {
+            check = new boolean[9];
+            for (int j = 0; j < 9; j++) {
+                if (!check[arr[i][j] - 1]) {
+                    check[arr[i][j] - 1] = true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        // 행 체크
+        for (int i = 0; i < 9; i++) {
+            check = new boolean[9];
+            for (int j = 0; j < 9; j++) {
+                if (!check[arr[j][i] - 1]) {
+                    check[arr[j][i] - 1] = true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        // 칸 체크
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                check = new boolean[9];
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        int x = i * 3 + k;
+                        int y = j * 3 + l;
+                        if (!check[arr[x][y] - 1]) {
+                            check[arr[x][y] - 1] = true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
 }
