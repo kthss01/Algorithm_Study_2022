@@ -17,11 +17,32 @@ import java.math.BigInteger;
  * 출력
  *  정수 N의 제곱근 출력
  * java8에선 sqrt 없어서 java11로 품
+ * 안쓰고 하려면 이진탐색으로 돌려야함
  */
 public class Main {
     public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BigInteger bi = new BigInteger(br.readLine());
-        System.out.println(bi.sqrt().toString(10));
+        //System.out.println(bi.sqrt().toString(10));
+
+        BigInteger left = new BigInteger("1");
+        BigInteger right = new BigInteger(bi.toString(10));
+        BigInteger two = new BigInteger("2");
+        BigInteger mid = null;
+
+        while (left.compareTo(right) < 0) {
+            mid = left.add(right).divide(two);
+            BigInteger temp = mid.pow(2);
+
+            if (bi.compareTo(temp) == 0) {
+                break;
+            } else if (bi.compareTo(temp) < 0) {
+                right = mid;
+            } else {
+                left = mid.add(new BigInteger("1"));
+            }
+        }
+
+        System.out.println(mid);
     }
 }
