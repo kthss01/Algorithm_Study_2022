@@ -1,5 +1,6 @@
 package Baekjoon.Bronze.Prob3_23972;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -22,21 +23,40 @@ import java.util.Scanner;
  *  손해를 보게 된다면 -1 출력
  * 
  * 
- * x >= (x - k) * n
+ * x <= (x - k) * n
  * (1 - n) x = - n k
  * x = -nk / (1 - n)
+ * 
+ * -> 문제 잘못이해했었음 N배로 만들어주는거였음
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
+        long k = sc.nextLong();
+        long n = sc.nextLong();
 
-        long k = sc.nextInt();
-        long n = sc.nextInt();
+        // BigInteger biK = new BigInteger(String.valueOf(k));
+        // BigInteger biN = new BigInteger(String.valueOf(n));
 
         long x = -1;
-        if (n < 1) {
-            x = (n * k) / (n - 1);
+        if (n > 1) {
+            long up = n * k % (n - 1) == 0 ? 0 : 1;
+            x = (n * k) / (n - 1) + up;
+            // x = biN.multiply(biK)
+            //     .divide(biN.subtract(new BigInteger("1")))
+            //     .longValue();
         }
+
+        // if (n > 1) {
+        //     x = k + 1;
+        //     while (true) {
+        //         if (x <= (x - k) * n) {
+        //             break;
+        //         }
+        //         x++;
+        //     }
+        // }
 
         System.out.println(x);
 
