@@ -42,25 +42,27 @@ public class Main {
                 break;
             }
 
+            if (sb.length() != 0) {
+                sb.append("\n");
+            }
+
             token = new StringTokenizer(str);
 
             Set<String> words = new LinkedHashSet<>();
             while (token.hasMoreTokens()) {
-                words.add(token.nextToken().toLowerCase());
+                words.add(token.nextToken().toLowerCase()
+                                            .replaceAll("[\\W_]", ""));
             }
 
             ArrayList<String> list = new ArrayList<>(words);
             Collections.sort(list);
 
             for (String word : list) {
-                String temp = word.replaceAll("[\\W_]", "");
-                if (temp.equals("") || temp.matches("^[0-9]*$")) {
+                if (word.equals("") || word.matches("^[0-9]*$")) {
                     continue;
                 }
-                sb.append(temp).append("\n");
+                sb.append(word).append("\n");
             }
-
-            sb.append("\n");
         }
 
         System.out.print(sb);
