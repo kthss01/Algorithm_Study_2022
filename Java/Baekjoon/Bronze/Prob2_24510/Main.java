@@ -25,31 +25,39 @@ public class Main {
         int c = Integer.parseInt(br.readLine());
         int cnt = 0;
 
-        for (int i = 0; i < c; i++) {
-            String str = br.readLine();
+        // for (int i = 0; i < c; i++) {
+        //     String str = br.readLine();
+        //     str = str.replaceAll("for", "#");
+        //     str = str.replaceAll("while", "#");
+        //     str = str.replaceAll("[a-z]", "");
+        //     cnt = Math.max(str.length(), cnt);
+        // }
+
+        while (c --> 0) {
             int temp = 0;
-            while (str.indexOf("for") != -1 || str.indexOf("while") != -1) {
-                temp++;
+            String str = br.readLine();
 
-                int nextStart = 0;
-
-                int idxFor = str.indexOf("for");
-                int idxWhile = str.indexOf("while");
-                if (idxFor != -1 && idxWhile != -1) {
-                    nextStart = idxFor < idxWhile ? idxFor + 3 : idxWhile + 5;
-                } else if (idxFor == -1) {
-                    nextStart = idxWhile + 5;
-                } else {
-                    nextStart = idxFor + 3;
+            for (int i = 0; i < str.length() - 2; i++) {
+                if (i < str.length() - 2 
+                    && str.charAt(i) == 'f'
+                    && str.charAt(i + 1) == 'o'
+                    && str.charAt(i + 2) == 'r') {
+                    temp++;
+                    i += 2;
                 }
 
-                if (str.length() > nextStart) {
-                    str = str.substring(nextStart);
-                } else {
-                    break;
+                if (i < str.length() - 4 
+                    && str.charAt(i) == 'w'
+                    && str.charAt(i + 1) == 'h'
+                    && str.charAt(i + 2) == 'i'
+                    && str.charAt(i + 3) == 'l'
+                    && str.charAt(i + 4) == 'e') {
+                    temp++;
+                    i += 4;
                 }
             }
-            cnt = Math.max(temp, cnt);
+
+            cnt = Math.max(cnt, temp);
         }
 
         System.out.println(cnt);
