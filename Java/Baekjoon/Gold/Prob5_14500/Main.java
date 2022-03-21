@@ -50,13 +50,32 @@ import java.util.StringTokenizer;
 class Point {
     int x;
     int y;
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
 class Shape {
-    List<Point> positions = new ArrayList<>();
+    List<Point> position;
 
-    public int compute(int[][] board, int x, int y) {
+    Shape(List<Point> position) {
+        this.position = position;
+    }
+
+    public int compute(int[][] board, int w, int h, int x, int y) {
         int sum = 0;
+
+        for (Point point : position) {
+            int px = point.x + x;
+            int py = point.y + y;
+
+            if (px < 0 || px >= w || py < 0 || py >= h) {
+                return -1;
+            }
+
+            sum += board[px][py];
+        }
 
         return sum;
     }
@@ -67,18 +86,45 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer token = new StringTokenizer(br.readLine());
 
+        // Shape 만들기
+        List<Shape> shapes = makeShape();
+
         int n = Integer.parseInt(token.nextToken());
         int m = Integer.parseInt(token.nextToken());
 
-        int[][] arr = new int[n][m];
+        int[][] board = new int[n][m];
 
         for (int i = 0; i < n; i++) {
             token = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
-                arr[i][j] = Integer.parseInt(token.nextToken());
+                board[i][j] = Integer.parseInt(token.nextToken());
             }
         }
 
 
+    }
+
+    private static List<Shape> makeShape() {
+        List<Shape> list = new ArrayList<>();
+
+        int[][] points = {
+            {0, 0}, {0, 1}, {0, 2}, {0, 3},
+            {0, 0}, {0, 1}, {1, 0}, {1, 1},
+            {0, 0}, {1, 0}, {2, 0}, {2, 1},
+            {0, 0}, {1, 0}, {1, 1}, {2, 1},
+            {0, 0}, {0, 1}, {0, 2}, {1, 1},
+        };
+
+        for (int i = 0; i < 5; i++) {
+            List<Point> position = new ArrayList<>();
+            for (int j = 0; j < 4; j++) {
+                int x = points[i * 4 + j][0];
+                int y = points[i * 4 + j][1];
+                position.add(new Point(x, y));
+            }
+            list.add(new Shape(position));
+        }
+
+        return list;
     }
 }
