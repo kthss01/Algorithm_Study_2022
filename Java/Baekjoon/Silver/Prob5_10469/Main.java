@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 /**
  * 사이 나쁜 여왕들 - 실버 5
  * 
@@ -36,10 +34,13 @@ public class Main {
 
         boolean isValid = true;
 
+        int cnt = 0;
+
         for (int i = 0; i < MAX_NUM; i++) {
             for (int j = 0; j < MAX_NUM; j++) {
                 if (board[i][j] == '*') {
                     isValid = checkValid(i, j);
+                    cnt++;
                 }
             }
             if (!isValid) {
@@ -47,7 +48,7 @@ public class Main {
             }            
         }
 
-        if (isValid) {
+        if (isValid && cnt == MAX_NUM) {
             System.out.println("valid");
         } else {
             System.out.println("invalid");
