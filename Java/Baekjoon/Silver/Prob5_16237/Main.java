@@ -36,23 +36,36 @@ public class Main {
         int d = Integer.parseInt(token.nextToken());
         int e = Integer.parseInt(token.nextToken());
 
-        // 이 방법 한계가 있을 듯 dp로 가자
         int ans = 0;
         ans += e;
-        ans += d; 
-        if (a != 0 && a >= d) {
-            a -= d;
-        } 
-        ans += c;
-        int t = b - c;
-        if (b != 0 && b >= c) {
-            b -= t;
-        }
-        if (a != 0 && a >= c - t) {
-            a -= c - t;
-        }
-        ans += b;
         
+        ans += d; 
+        if (a <= d) {
+            a = 0;
+        } else {
+            a -= d;
+        }
+  
+        ans += c;
+        if (b >= c) {
+            b -= c;
+            ans = ans + b / 2 + b % 2;
+            a -= b / 2;
+            if (b % 2 != 0) {
+                a -= 3;
+            }
+        } else {
+            c -= b;
+            a -= c * 2;
+        }
 
+        if (a > 0) {
+            ans += a / 5;
+            if (a % 5 != 0) {
+                ans++;
+            }   
+        }        
+
+        System.out.println(ans);
     }
 }
