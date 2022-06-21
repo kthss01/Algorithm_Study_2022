@@ -1,4 +1,4 @@
-package leetcode.easy.prob_9_palindrome_number;
+package leetcode.easy.prob_9;
 
 /**
  * Easy

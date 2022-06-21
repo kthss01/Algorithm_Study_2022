@@ -1,4 +1,4 @@
-package leetcode.easy.prob_13_roman_to_integer;
+package leetcode.easy.prob_13;
 
 import java.util.HashMap;
 import java.util.Map;
