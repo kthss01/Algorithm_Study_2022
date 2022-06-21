@@ -7,7 +7,8 @@ SELECT
             ELSE 0
         END AS bonus 
 FROM
-    Employees EMP   
+    Employees EMP
+ORDER BY EMP.employee_id
     ;
 
 -- 627 Swap Salary
