@@ -35,3 +35,10 @@ GROUP BY
 
 -- 1527 Patients With a Condition
 -- Type이 D1AB1으로 시작하는거 찾기 포함되는거 찾기
+-- 정규표현식으로 해야했음
+SELECT  
+    PAT.patient_id
+    , PAT.patient_name
+    , PAT.conditions
+FROM Patients PAT
+WHERE regexp_like(PAT.conditions, '(\s+|^)DIAB1')
