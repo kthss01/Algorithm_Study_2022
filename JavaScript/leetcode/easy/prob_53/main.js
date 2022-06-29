@@ -1,5 +1,5 @@
 /**
- * easy
+ * medium
  * 53. Maximum Subarray
  * 부분배열 중 최대값 구하기
  *
