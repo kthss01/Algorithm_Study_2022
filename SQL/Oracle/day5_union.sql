@@ -26,3 +26,15 @@ WHERE
 GROUP BY
     VIS.customer_id
 ;
+
+-- 1148. Article Views 1
+-- author_id와 viewer_id가 같은 거 조회
+-- id로 오름차순 정렬
+SELECT
+    DISTINCT VIW.author_id AS "id"
+FROM 
+    VIEWS VIW
+WHERE
+    VIW.author_id = VIW.viewer_id
+ORDER BY VIW.author_id
+;
