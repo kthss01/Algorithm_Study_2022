@@ -42,3 +42,4 @@ SELECT
     , PAT.conditions
 FROM Patients PAT
 WHERE regexp_like(PAT.conditions, '(\s+|^)DIAB1')
+;
