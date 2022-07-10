@@ -28,4 +28,14 @@ GROUP BY
 
 -- 1729. Find Followers Count
 -- user별 follower 갯수 조회
--- user_id 별로 젇정렬
+-- user_id 별로 정렬
+SELECT
+    FOL.user_id
+    , COUNT(*) AS "followers_count"
+FROM
+    Followers FOL
+GROUP BY 
+    FOl.user_id
+ORDER BY 
+    FOL.user_id
+;
