@@ -1,5 +1,10 @@
 {
     "java.project.sourcePaths": [
         "Java"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Java/spring-security-crypto-3.2.10.RELEASE.jar",
+        "Java/jBCrypt-0.4.1.jar"
     ]
 }
